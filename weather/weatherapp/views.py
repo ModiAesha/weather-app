@@ -5,14 +5,14 @@ import requests
 from datetime import datetime, timezone, timedelta
 import json
 
-# Create your views here.
+
 
 def index(request):
     if request.method == "POST":
         city = str(request.POST.get('city'))
 
-        # Enter your "openweathermap.org" API_KEY below
-        api_key = "4f4f6c18157823e4fd72fb471585c904"
+       
+        api_key = ""
         
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
 
@@ -44,42 +44,7 @@ def index(request):
 
     return render(request, 'index.html')
 
-# Create your views here.
-'''   
-def index(request):
 
-    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=39d9180805cd53e7837b932150ba8306'
 
-    #city = 'Ahemdabad'
 
-    if request.method == 'POST': # only true if form is submitted
-        form = CityForm(request.POST) # add actual request data to form for processing
-        form.save() # will validate and save if validate
-
-    form = CityForm()
-    
-    cities = City.objects.all() #return all the cities in the database
-
-    weather_data = []
-
-    for city in cities:
-
-        city_weather = requests.get(url.format(city)).json() #request the API data and convert the JSON to Python data types
-
-    weather = {}
-    try:
-      weather = {
-        'city': city,
-        'temperature': city_weather['main']['temp'],
-        'description': city_weather['weather'][0]['description'],
-        'icon': city_weather['weather'][0]['icon'],
-    }
-    except KeyError:
-    # Handle the error case, for example:
-         print(f"Error: API response missing 'main' key for city: {city}")
-
-    weather_data.append(weather) #add the data for the current city into our list
-
-    context = {'weather_data' : weather_data}
-
-    return render(request, 'index.html', context) #returns the index.html template'''
+  
